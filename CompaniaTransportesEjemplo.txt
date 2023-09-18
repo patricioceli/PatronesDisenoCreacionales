@@ -1,0 +1,51 @@
+Algoritmo FactoryMethodTransportes
+
+Interfaz IEnvio
+    Metodo CalcularCosto() de tipo decimal
+    Metodo CalcularTiempoEntrega() de tipo entero
+Fin Interfaz
+
+Clase CompaniaTransportes
+    Metodo abstracto CrearEnvio() de tipo IEnvio
+Fin Clase
+
+Clase CompaniaTransportesTerrestres hereda de CompaniaTransportes
+    Metodo CrearEnvio() de tipo IEnvio
+        Retornar nuevo EnvioTerrestre()
+Fin Clase
+
+Clase CompaniaTransportesAereos hereda de CompaniaTransportes
+    Metodo CrearEnvio() de tipo IEnvio
+        Retornar nuevo EnvioAereo()
+Fin Clase
+
+Clase EnvioTerrestre implementa IEnvio
+    Metodo CalcularCosto() de tipo decimal
+        Retornar costo_terrestre
+    Metodo CalcularTiempoEntrega() de tipo entero
+        Retornar tiempo_terrestre
+Fin Clase
+
+Clase EnvioAereo implementa IEnvio
+    Metodo CalcularCosto() de tipo decimal
+        Retornar costo_aereo
+    Metodo CalcularTiempoEntrega() de tipo entero
+        Retornar tiempo_aereo
+Fin Clase
+
+Algoritmo Principal
+    CompaniaTransportes compania = null
+    IEnvio envio = null
+
+    // Crear envío terrestre
+    compania = nuevo CompaniaTransportesTerrestres()
+    envio = compania.CrearEnvio()
+    Escribir "Costo envío terrestre:", envio.CalcularCosto()
+    Escribir "Tiempo de entrega envío terrestre:", envio.CalcularTiempoEntrega()
+
+    // Crear envío aéreo
+    compania = nuevo CompaniaTransportesAereos()
+    envio = compania.CrearEnvio()
+    Escribir "Costo envío aéreo:", envio.CalcularCosto()
+    Escribir "Tiempo de entrega envío aéreo:", envio.CalcularTiempoEntrega()
+Fin Algoritmo
